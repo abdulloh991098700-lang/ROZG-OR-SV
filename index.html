@@ -1,0 +1,1266 @@
+```html
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ROZG‘OR SV</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ font-family:Arial,Helvetica,sans-serif;
+ background:#f4f7fb;
+ color:#172033;
+}
+
+/* ================= HEADER ================= */
+
+header{
+ position:relative;
+ overflow:hidden;
+ min-height:230px;
+ background:linear-gradient(135deg,#0757d9,#12a7ff);
+ color:white;
+ text-align:center;
+ padding:35px 15px;
+ box-shadow:0 5px 25px #0003;
+}
+
+header h1{
+ position:relative;
+ z-index:5;
+ font-size:42px;
+ margin:15px 0 5px;
+}
+
+header p{
+ position:relative;
+ z-index:5;
+ font-size:17px;
+}
+
+.basket{
+ position:absolute;
+ left:50%;
+ top:55px;
+ transform:translateX(-50%);
+ font-size:115px;
+ opacity:.13;
+}
+
+.float-products{
+ position:absolute;
+ inset:0;
+ pointer-events:none;
+}
+
+.float-products span{
+ position:absolute;
+ font-size:42px;
+ animation:float 4s infinite ease-in-out;
+ opacity:.9;
+}
+
+.float-products span:nth-child(1){left:4%;top:25px}
+.float-products span:nth-child(2){left:13%;top:135px}
+.float-products span:nth-child(3){left:25%;top:35px}
+.float-products span:nth-child(4){right:7%;top:30px}
+.float-products span:nth-child(5){right:17%;top:140px}
+.float-products span:nth-child(6){right:29%;top:40px}
+.float-products span:nth-child(7){left:42%;top:135px}
+.float-products span:nth-child(8){right:42%;top:25px}
+.float-products span:nth-child(9){left:70%;top:130px}
+
+@keyframes float{
+ 50%{transform:translateY(-12px) rotate(5deg)}
+}
+
+/* ================= MAIN ================= */
+
+.container{
+ max-width:1200px;
+ margin:auto;
+ padding:20px;
+}
+
+.top{
+ display:flex;
+ gap:10px;
+ flex-wrap:wrap;
+ margin-bottom:20px;
+}
+
+button{
+ border:0;
+ border-radius:12px;
+ padding:12px 17px;
+ cursor:pointer;
+ font-weight:bold;
+ transition:.2s;
+}
+
+button:hover{
+ transform:translateY(-2px);
+}
+
+.primary{background:#0865ee;color:white}
+.green{background:#16a05d;color:white}
+.red{background:#e64848;color:white}
+.dark{background:#172033;color:white}
+.gray{background:#e9eef6;color:#172033}
+
+.section{
+ background:white;
+ border-radius:20px;
+ padding:20px;
+ margin-bottom:20px;
+ box-shadow:0 5px 25px #0000000b;
+}
+
+.section h2{
+ margin-top:0;
+}
+
+/* ================= CATEGORIES ================= */
+
+.categories{
+ display:flex;
+ gap:8px;
+ overflow-x:auto;
+ padding-bottom:12px;
+}
+
+.category{
+ white-space:nowrap;
+ background:#edf2f8;
+}
+
+.category.active{
+ background:#0865ee;
+ color:white;
+}
+
+/* ================= PRODUCTS ================= */
+
+.products{
+ display:grid;
+ grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+ gap:15px;
+}
+
+.product{
+ border:1px solid #e1e7ef;
+ border-radius:18px;
+ padding:13px;
+ background:white;
+ transition:.2s;
+}
+
+.product:hover{
+ transform:translateY(-4px);
+ box-shadow:0 8px 25px #00000012;
+}
+
+.photo{
+ height:145px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ background:linear-gradient(135deg,#f5f8fc,#edf3fa);
+ border-radius:15px;
+ font-size:72px;
+}
+
+.product h3{
+ margin:12px 0 5px;
+}
+
+.unit{
+ color:#718096;
+ font-size:14px;
+}
+
+.counter{
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ gap:13px;
+ margin:13px 0;
+}
+
+.counter button{
+ width:40px;
+ height:40px;
+ padding:0;
+ font-size:21px;
+}
+
+.count{
+ min-width:60px;
+ text-align:center;
+ font-weight:bold;
+}
+
+/* ================= LIST ================= */
+
+.list-item{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ border-bottom:1px solid #edf0f4;
+ padding:13px 0;
+}
+
+.list-item:last-child{
+ border-bottom:0;
+}
+
+.list-icon{
+ width:48px;
+ font-size:34px;
+ text-align:center;
+}
+
+.list-info{
+ flex:1;
+}
+
+.list-info strong{
+ display:block;
+}
+
+.list-info small{
+ color:#718096;
+}
+
+.status{
+ display:flex;
+ gap:6px;
+}
+
+.status button{
+ padding:9px 12px;
+}
+
+.selected{
+ box-shadow:0 0 0 3px #1264f533;
+}
+
+.progress{
+ height:12px;
+ background:#e5eaf1;
+ border-radius:20px;
+ overflow:hidden;
+ margin:15px 0;
+}
+
+.progress-bar{
+ height:100%;
+ background:#16a05d;
+ width:0%;
+ transition:.3s;
+}
+
+.summary{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+ gap:12px;
+}
+
+.stat{
+ background:#f5f8fc;
+ border-radius:15px;
+ padding:15px;
+}
+
+.stat b{
+ display:block;
+ font-size:25px;
+ margin-top:5px;
+}
+
+input{
+ width:100%;
+ padding:14px;
+ border:1px solid #d6dde7;
+ border-radius:12px;
+ font-size:16px;
+}
+
+.history-card{
+ background:#f6f8fb;
+ border-radius:15px;
+ padding:15px;
+ margin-bottom:10px;
+}
+
+.empty{
+ text-align:center;
+ padding:30px;
+ color:#7b8798;
+}
+
+.hidden{
+ display:none;
+}
+
+.search{
+ margin:15px 0;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px){
+
+ header{
+  min-height:200px;
+ }
+
+ header h1{
+  font-size:30px;
+ }
+
+ .float-products span{
+  font-size:30px;
+ }
+
+ .products{
+  grid-template-columns:repeat(2,1fr);
+ }
+
+ .product{
+  padding:9px;
+ }
+
+ .photo{
+  height:110px;
+  font-size:55px;
+ }
+
+ .container{
+  padding:10px;
+ }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+ <div class="float-products">
+  <span>🍎</span>
+  <span>🥕</span>
+  <span>🥛</span>
+  <span>🍌</span>
+  <span>🍅</span>
+  <span>🧀</span>
+  <span>🥚</span>
+  <span>🥤</span>
+  <span>🧻</span>
+ </div>
+
+ <div class="basket">🛒</div>
+
+ <h1>🛒 ROZG‘OR SV</h1>
+ <p>Uy uchun aqlli bozor ro‘yxati</p>
+
+</header>
+
+<div class="container">
+
+ <div class="top">
+  <button class="primary" onclick="showCreate()">➕ Ro‘zg‘or tuzish</button>
+  <button class="green" onclick="startShopping()">🛒 Bozorga chiqish</button>
+  <button class="dark" onclick="showHistory()">📜 Tarix</button>
+ </div>
+
+ <!-- CREATE -->
+
+ <div id="createPage">
+
+  <div class="section">
+
+   <h2>🛍️ Mahsulotlar</h2>
+
+   <input
+    class="search"
+    id="search"
+    placeholder="🔎 Mahsulot qidirish..."
+    oninput="renderProducts()"
+   >
+
+   <div class="categories" id="categories"></div>
+
+   <div class="products" id="products"></div>
+
+  </div>
+
+  <div class="section">
+
+   <h2>📋 Mening ro‘yxatim</h2>
+
+   <div id="myList"></div>
+
+   <div id="saveArea" class="hidden" style="margin-top:15px">
+    <button class="primary" onclick="saveList()">
+     💾 Ro‘yxatni saqlash
+    </button>
+   </div>
+
+  </div>
+
+ </div>
+
+ <!-- SHOPPING -->
+
+ <div id="shoppingPage" class="hidden">
+
+  <div class="section">
+
+   <h2>🛒 Bozor qilish</h2>
+
+   <div class="summary">
+
+    <div class="stat">
+     Olingan
+     <b id="boughtCount">0</b>
+    </div>
+
+    <div class="stat">
+     Qolgan
+     <b id="leftCount">0</b>
+    </div>
+
+    <div class="stat">
+     Jami
+     <b id="totalCount">0</b>
+    </div>
+
+   </div>
+
+   <div class="progress">
+    <div class="progress-bar" id="progressBar"></div>
+   </div>
+
+   <div id="shoppingList"></div>
+
+   <div id="finishArea" class="hidden">
+
+    <hr>
+
+    <h2>🎉 Bozor tugadi!</h2>
+
+    <p>Umumiy xarajatni kiriting:</p>
+
+    <input
+     id="totalPrice"
+     type="number"
+     placeholder="Masalan: 487000"
+    >
+
+    <br><br>
+
+    <button class="green" onclick="finishShopping()">
+     💾 Bozorni yakunlash
+    </button>
+
+   </div>
+
+  </div>
+
+ </div>
+
+ <!-- HISTORY -->
+
+ <div id="historyPage" class="hidden">
+
+  <div class="section">
+
+   <h2>📜 Bozor tarixi</h2>
+
+   <div id="history"></div>
+
+  </div>
+
+ </div>
+
+</div>
+
+<script>
+
+/* =====================================================
+   ROZG‘OR SV KATTA MAHSULOTLAR BAZASI
+===================================================== */
+
+const products = [
+
+/* ================= MEVALAR ================= */
+
+{name:"Olma",unit:"kg",emoji:"🍎",cat:"Mevalar"},
+{name:"Banan",unit:"kg",emoji:"🍌",cat:"Mevalar"},
+{name:"Apelsin",unit:"kg",emoji:"🍊",cat:"Mevalar"},
+{name:"Mandarin",unit:"kg",emoji:"🍊",cat:"Mevalar"},
+{name:"Limon",unit:"kg",emoji:"🍋",cat:"Mevalar"},
+{name:"Uzum",unit:"kg",emoji:"🍇",cat:"Mevalar"},
+{name:"Anor",unit:"kg",emoji:"🍎",cat:"Mevalar"},
+{name:"Nok",unit:"kg",emoji:"🍐",cat:"Mevalar"},
+{name:"Shaftoli",unit:"kg",emoji:"🍑",cat:"Mevalar"},
+{name:"O‘rik",unit:"kg",emoji:"🍑",cat:"Mevalar"},
+{name:"Gilos",unit:"kg",emoji:"🍒",cat:"Mevalar"},
+{name:"Qulupnay",unit:"kg",emoji:"🍓",cat:"Mevalar"},
+{name:"Tarvuz",unit:"kg",emoji:"🍉",cat:"Mevalar"},
+{name:"Qovun",unit:"kg",emoji:"🍈",cat:"Mevalar"},
+{name:"Kivi",unit:"kg",emoji:"🥝",cat:"Mevalar"},
+{name:"Ananas",unit:"dona",emoji:"🍍",cat:"Mevalar"},
+{name:"Mango",unit:"dona",emoji:"🥭",cat:"Mevalar"},
+{name:"Kokos",unit:"dona",emoji:"🥥",cat:"Mevalar"},
+
+/* ================= SABZAVOT ================= */
+
+{name:"Kartoshka",unit:"kg",emoji:"🥔",cat:"Sabzavot"},
+{name:"Sabzi",unit:"kg",emoji:"🥕",cat:"Sabzavot"},
+{name:"Piyoz",unit:"kg",emoji:"🧅",cat:"Sabzavot"},
+{name:"Sholg‘om",unit:"kg",emoji:"🥬",cat:"Sabzavot"},
+{name:"Turp",unit:"kg",emoji:"🌱",cat:"Sabzavot"},
+{name:"Qizilcha",unit:"kg",emoji:"🫜",cat:"Sabzavot"},
+{name:"Pomidor",unit:"kg",emoji:"🍅",cat:"Sabzavot"},
+{name:"Bodring",unit:"kg",emoji:"🥒",cat:"Sabzavot"},
+{name:"Baqlajon",unit:"kg",emoji:"🍆",cat:"Sabzavot"},
+{name:"Karam",unit:"kg",emoji:"🥬",cat:"Sabzavot"},
+{name:"Gulkaram",unit:"dona",emoji:"🥦",cat:"Sabzavot"},
+{name:"Brokkoli",unit:"dona",emoji:"🥦",cat:"Sabzavot"},
+{name:"Qovoq",unit:"kg",emoji:"🎃",cat:"Sabzavot"},
+{name:"Sarimsoq",unit:"kg",emoji:"🧄",cat:"Sabzavot"},
+{name:"Makkajo‘xori",unit:"dona",emoji:"🌽",cat:"Sabzavot"},
+{name:"Qalampir",unit:"kg",emoji:"🌶️",cat:"Sabzavot"},
+{name:"Ko‘kat",unit:"bog‘",emoji:"🌿",cat:"Sabzavot"},
+{name:"Ukrop",unit:"bog‘",emoji:"🌿",cat:"Sabzavot"},
+{name:"Petrushka",unit:"bog‘",emoji:"🌿",cat:"Sabzavot"},
+
+/* ================= SUT MAHSULOTLARI ================= */
+
+{name:"Sut",unit:"litr",emoji:"🥛",cat:"Sut mahsulotlari"},
+{name:"Malako",unit:"dona",emoji:"🥛",cat:"Sut mahsulotlari"},
+{name:"Qatiq",unit:"dona",emoji:"🥛",cat:"Sut mahsulotlari"},
+{name:"Suzma",unit:"kg",emoji:"🥣",cat:"Sut mahsulotlari"},
+{name:"Smetana",unit:"dona",emoji:"🥛",cat:"Sut mahsulotlari"},
+{name:"Pishloq",unit:"kg",emoji:"🧀",cat:"Sut mahsulotlari"},
+{name:"Brinza",unit:"kg",emoji:"🧀",cat:"Sut mahsulotlari"},
+{name:"Maslo",unit:"dona",emoji:"🧈",cat:"Sut mahsulotlari"},
+{name:"Tvorog",unit:"kg",emoji:"🥣",cat:"Sut mahsulotlari"},
+{name:"Qaymoq",unit:"dona",emoji:"🥛",cat:"Sut mahsulotlari"},
+{name:"Yogurt",unit:"dona",emoji:"🥛",cat:"Sut mahsulotlari"},
+{name:"Tuxum",unit:"dona",emoji:"🥚",cat:"Sut mahsulotlari"},
+
+/* ================= GO‘SHT ================= */
+
+{name:"Mol go‘shti",unit:"kg",emoji:"🥩",cat:"Go‘sht"},
+{name:"Qo‘y go‘shti",unit:"kg",emoji:"🥩",cat:"Go‘sht"},
+{name:"Tovuq go‘shti",unit:"kg",emoji:"🍗",cat:"Go‘sht"},
+{name:"Qiyma",unit:"kg",emoji:"🥩",cat:"Go‘sht"},
+{name:"Kolbasa",unit:"kg",emoji:"🌭",cat:"Go‘sht"},
+{name:"Sosiska",unit:"kg",emoji:"🌭",cat:"Go‘sht"},
+{name:"Dudlangan kolbasa",unit:"kg",emoji:"🌭",cat:"Go‘sht"},
+
+/* ================= OZIQ-OVQAT ================= */
+
+{name:"Guruch",unit:"kg",emoji:"🍚",cat:"Oziq-ovqat"},
+{name:"Mosh",unit:"kg",emoji:"🫘",cat:"Oziq-ovqat"},
+{name:"Grechka",unit:"kg",emoji:"🌾",cat:"Oziq-ovqat"},
+{name:"Makaron",unit:"dona",emoji:"🍝",cat:"Oziq-ovqat"},
+{name:"Un",unit:"kg",emoji:"🌾",cat:"Oziq-ovqat"},
+{name:"Shakar",unit:"kg",emoji:"🍬",cat:"Oziq-ovqat"},
+{name:"Tuz",unit:"kg",emoji:"🧂",cat:"Oziq-ovqat"},
+{name:"Yog‘",unit:"litr",emoji:"🫗",cat:"Oziq-ovqat"},
+{name:"Kofe",unit:"dona",emoji:"☕",cat:"Oziq-ovqat"},
+{name:"Kashnich",unit:"bog‘",emoji:"🌿",cat:"Oziq-ovqat"},
+{name:"Ukrop",unit:"bog‘",emoji:"🌿",cat:"Oziq-ovqat"},
+{name:"Non",unit:"dona",emoji:"🍞",cat:"Oziq-ovqat"},
+{name:"Bulochka",unit:"dona",emoji:"🥐",cat:"Oziq-ovqat"},
+{name:"Pechenye",unit:"dona",emoji:"🍪",cat:"Oziq-ovqat"},
+{name:"Shokolad",unit:"dona",emoji:"🍫",cat:"Oziq-ovqat"},
+{name:"Konfet",unit:"kg",emoji:"🍬",cat:"Oziq-ovqat"},
+{name:"Chips",unit:"dona",emoji:"🥔",cat:"Oziq-ovqat"},
+{name:"Mayonez",unit:"dona",emoji:"🥫",cat:"Oziq-ovqat"},
+{name:"Ketchup",unit:"dona",emoji:"🍅",cat:"Oziq-ovqat"},
+{name:"Tomat pasta",unit:"dona",emoji:"🥫",cat:"Oziq-ovqat"},
+{name:"Murch",unit:"dona",emoji:"🫙",cat:"Oziq-ovqat"},
+{name:"Zira",unit:"dona",emoji:"🫙",cat:"Oziq-ovqat"},
+
+/* ================= ICHIMLIKLAR ================= */
+
+{name:"Cola",unit:"litr",emoji:"🥤",cat:"Ichimliklar"},
+{name:"Fanta",unit:"litr",emoji:"🥤",cat:"Ichimliklar"},
+{name:"Pepsi",unit:"litr",emoji:"🥤",cat:"Ichimliklar"},
+{name:"Gazli suv",unit:"litr",emoji:"💧",cat:"Ichimliklar"},
+{name:"Hydrolife",unit:"litr",emoji:"💧",cat:"Ichimliklar"},
+{name:"Oddiy suv",unit:"litr",emoji:"💧",cat:"Ichimliklar"},
+{name:"O‘rik sharbati",unit:"litr",emoji:"🧃",cat:"Ichimliklar"},
+{name:"Gilos sharbati",unit:"litr",emoji:"🧃",cat:"Ichimliklar"},
+{name:"Olma sharbati",unit:"litr",emoji:"🧃",cat:"Ichimliklar"},
+{name:"Multifruit",unit:"litr",emoji:"🧃",cat:"Ichimliklar"},
+{name:"Energetik ichimlik",unit:"dona",emoji:"🥤",cat:"Ichimliklar"},
+{name:"Kakao",unit:"dona",emoji:"☕",cat:"Ichimliklar"},
+
+/* ================= CHOY ================= */
+
+{name:"Ko‘k choy",unit:"dona",emoji:"🍵",cat:"Choy"},
+{name:"Qora choy",unit:"dona",emoji:"🫖",cat:"Choy"},
+{name:"Limonli choy",unit:"dona",emoji:"🍋",cat:"Choy"},
+{name:"Paket choy",unit:"quti",emoji:"🫖",cat:"Choy"},
+
+/* ================= TOZALASH ================= */
+
+{name:"Kir yuvish poroshogi",unit:"kg",emoji:"🧺",cat:"Tozalash"},
+{name:"Kir yuvish geli",unit:"dona",emoji:"🧴",cat:"Tozalash"},
+{name:"Idish yuvish geli",unit:"dona",emoji:"🫧",cat:"Tozalash"},
+{name:" Oqartiruvchi",unit:"dona",emoji:"🧴",cat:"Tozalash"},
+{name:"Pol yuvish vositasi",unit:"dona",emoji:"🧹",cat:"Tozalash"},
+{name:"Oyna tozalagich",unit:"dona",emoji:"🪟",cat:"Tozalash"},
+{name:"Gubka",unit:"dona",emoji:"🧽",cat:"Tozalash"},
+{name:"Salafan paket",unit:"dona",emoji:"🛍️",cat:"Tozalash"},
+{name:"Axlat paketi",unit:"dona",emoji:"🗑️",cat:"Tozalash"},
+{name:"Hojatxona qog‘ozi",unit:"dona",emoji:"🧻",cat:"Tozalash"},
+{name:"Salfetka",unit:"dona",emoji:"🧻",cat:"Tozalash"},
+{name:"Qog‘oz sochiq",unit:"dona",emoji:"🧻",cat:"Tozalash"},
+
+/* ================= GIGIYENA ================= */
+
+{name:"Tish cho‘tkasi",unit:"dona",emoji:"🪥",cat:"Gigiyena"},
+{name:"Zubnaya pasta",unit:"dona",emoji:"🦷",cat:"Gigiyena"},
+{name:"Shampun",unit:"dona",emoji:"🧴",cat:"Gigiyena"},
+{name:"Sovun",unit:"dona",emoji:"🧼",cat:"Gigiyena"},
+{name:"Dush geli",unit:"dona",emoji:"🧴",cat:"Gigiyena"},
+{name:"Soch konditsioneri",unit:"dona",emoji:"🧴",cat:"Gigiyena"},
+{name:"Dezodorant",unit:"dona",emoji:"🧴",cat:"Gigiyena"},
+{name:"Taroq",unit:"dona",emoji:"💇",cat:"Gigiyena"},
+{name:"Paxta",unit:"dona",emoji:"⚪",cat:"Gigiyena"},
+{name:"Nam salfetka",unit:"dona",emoji:"🧻",cat:"Gigiyena"},
+
+/* ================= UY ================= */
+
+{name:"Lampochka",unit:"dona",emoji:"💡",cat:"Uy-ro‘zg‘or"},
+{name:"Batareya",unit:"dona",emoji:"🔋",cat:"Uy-ro‘zg‘or"},
+{name:"Gugurt",unit:"quti",emoji:"🔥",cat:"Uy-ro‘zg‘or"},
+{name:"Chaqmoq",unit:"dona",emoji:"🔥",cat:"Uy-ro‘zg‘or"},
+{name:"Folga",unit:"dona",emoji:"🧻",cat:"Uy-ro‘zg‘or"},
+{name:"Pishirish qog‘ozi",unit:"dona",emoji:"📜",cat:"Uy-ro‘zg‘or"},
+{name:"Plastik idish",unit:"dona",emoji:"🥣",cat:"Uy-ro‘zg‘or"},
+{name:"Stakan",unit:"dona",emoji:"🥛",cat:"Uy-ro‘zg‘or"},
+
+];
+
+
+/* =====================================================
+   APP
+===================================================== */
+
+let selectedCategory="Barchasi";
+
+let list=JSON.parse(
+ localStorage.getItem("rozgorList")||"[]"
+);
+
+let shoppingList=[];
+
+let history=JSON.parse(
+ localStorage.getItem("rozgorHistory")||"[]"
+);
+
+
+/* ================= CATEGORY ================= */
+
+function renderCategories(){
+
+ const cats=[
+  "Barchasi",
+  ...new Set(products.map(p=>p.cat))
+ ];
+
+ document.getElementById("categories").innerHTML=
+ cats.map(c=>`
+
+  <button
+   class="category ${c===selectedCategory?"active":""}"
+   onclick="selectCategory('${c}')">
+
+   ${c}
+
+  </button>
+
+ `).join("");
+
+}
+
+function selectCategory(cat){
+
+ selectedCategory=cat;
+
+ renderCategories();
+ renderProducts();
+
+}
+
+
+/* ================= PRODUCTS ================= */
+
+function renderProducts(){
+
+ const search=
+ document.getElementById("search").value
+ .toLowerCase()
+ .trim();
+
+ let filtered=products.filter(p=>{
+
+  const categoryOK=
+   selectedCategory==="Barchasi" ||
+   p.cat===selectedCategory;
+
+  const searchOK=
+   p.name.toLowerCase().includes(search);
+
+  return categoryOK && searchOK;
+
+ });
+
+ document.getElementById("products").innerHTML=
+
+ filtered.map(p=>{
+
+  const item=list.find(x=>x.name===p.name);
+
+  const count=item?item.count:0;
+
+  return `
+
+   <div class="product">
+
+    <div class="photo">
+     ${p.emoji}
+    </div>
+
+    <h3>${p.name}</h3>
+
+    <div class="unit">
+     ${p.unit}
+    </div>
+
+    <div class="counter">
+
+     <button
+      class="gray"
+      onclick="changeProduct('${p.name}',-1)">
+      −
+     </button>
+
+     <div class="count">
+      ${count} ${count? p.unit:""}
+     </div>
+
+     <button
+      class="primary"
+      onclick="changeProduct('${p.name}',1)">
+      +
+     </button>
+
+    </div>
+
+    ${
+     count>0
+     ?
+     `<button
+       class="red"
+       style="width:100%"
+       onclick="removeProduct('${p.name}')">
+       ✕ Olib tashlash
+      </button>`
+     :
+     ""
+    }
+
+   </div>
+
+  `;
+
+ }).join("");
+
+}
+
+
+/* ================= ADD ================= */
+
+function changeProduct(name,amount){
+
+ const p=products.find(x=>x.name===name);
+
+ let item=list.find(x=>x.name===name);
+
+ if(!item && amount>0){
+
+  list.push({
+   name:p.name,
+   unit:p.unit,
+   emoji:p.emoji,
+   count:amount,
+   status:"no"
+  });
+
+ }
+
+ else if(item){
+
+  item.count+=amount;
+
+  if(item.count<=0){
+
+   list=list.filter(
+    x=>x.name!==name
+   );
+
+  }
+
+ }
+
+ renderProducts();
+ renderMyList();
+
+}
+
+
+/* ================= REMOVE ================= */
+
+function removeProduct(name){
+
+ list=list.filter(
+  x=>x.name!==name
+ );
+
+ renderProducts();
+ renderMyList();
+
+}
+
+
+/* ================= MY LIST ================= */
+
+function renderMyList(){
+
+ const box=document.getElementById("myList");
+
+ if(list.length===0){
+
+  box.innerHTML=`
+   <div class="empty">
+    Hali mahsulot tanlanmagan.
+   </div>
+  `;
+
+  document
+   .getElementById("saveArea")
+   .classList.add("hidden");
+
+  return;
+
+ }
+
+ box.innerHTML=list.map(x=>`
+
+  <div class="list-item">
+
+   <div class="list-icon">
+    ${x.emoji}
+   </div>
+
+   <div class="list-info">
+
+    <strong>${x.name}</strong>
+
+    <small>
+     ${x.count} ${x.unit}
+    </small>
+
+   </div>
+
+   <button
+    class="red"
+    onclick="removeProduct('${x.name}')">
+    ✕
+   </button>
+
+  </div>
+
+ `).join("");
+
+ document
+  .getElementById("saveArea")
+  .classList.remove("hidden");
+
+}
+
+
+/* ================= SAVE ================= */
+
+function saveList(){
+
+ localStorage.setItem(
+  "rozgorList",
+  JSON.stringify(list)
+ );
+
+ alert("✅ ROZG‘OR SV ro‘yxati saqlandi!");
+
+}
+
+
+/* ================= PAGES ================= */
+
+function showCreate(){
+
+ document
+  .getElementById("createPage")
+  .classList.remove("hidden");
+
+ document
+  .getElementById("shoppingPage")
+  .classList.add("hidden");
+
+ document
+  .getElementById("historyPage")
+  .classList.add("hidden");
+
+}
+
+function startShopping(){
+
+ if(list.length===0){
+
+  alert(
+   "Avval mahsulotlarni ro‘yxatga qo‘shing."
+  );
+
+  return;
+
+ }
+
+ shoppingList=
+ JSON.parse(JSON.stringify(list));
+
+ shoppingList.forEach(
+  x=>x.status="no"
+ );
+
+ document
+  .getElementById("createPage")
+  .classList.add("hidden");
+
+ document
+  .getElementById("historyPage")
+  .classList.add("hidden");
+
+ document
+  .getElementById("shoppingPage")
+  .classList.remove("hidden");
+
+ renderShopping();
+
+}
+
+
+/* ================= SHOPPING ================= */
+
+function renderShopping(){
+
+ const bought=
+ shoppingList.filter(
+  x=>x.status==="yes"
+ ).length;
+
+ const total=
+ shoppingList.length;
+
+ const left=total-bought;
+
+ const percent=
+ total
+ ? Math.round(bought/total*100)
+ : 0;
+
+ document.getElementById(
+  "boughtCount"
+ ).textContent=bought;
+
+ document.getElementById(
+  "leftCount"
+ ).textContent=left;
+
+ document.getElementById(
+  "totalCount"
+ ).textContent=total;
+
+ document.getElementById(
+  "progressBar"
+ ).style.width=percent+"%";
+
+
+ document.getElementById(
+  "shoppingList"
+ ).innerHTML=
+
+ shoppingList.map((x,i)=>`
+
+  <div class="list-item">
+
+   <div class="list-icon">
+    ${x.emoji}
+   </div>
+
+   <div class="list-info">
+
+    <strong>${x.name}</strong>
+
+    <small>
+     ${x.count} ${x.unit}
+    </small>
+
+   </div>
+
+   <div class="status">
+
+    <button
+     class="${x.status==="no"
+       ?"red selected"
+       :"gray"}"
+     onclick="setStatus(${i},'no')">
+
+     YO‘Q
+
+    </button>
+
+    <button
+     class="${x.status==="yes"
+       ?"green selected"
+       :"gray"}"
+     onclick="setStatus(${i},'yes')">
+
+     BOR
+
+    </button>
+
+   </div>
+
+  </div>
+
+ `).join("");
+
+
+ if(bought===total){
+
+  document
+   .getElementById("finishArea")
+   .classList.remove("hidden");
+
+ }
+
+ else{
+
+  document
+   .getElementById("finishArea")
+   .classList.add("hidden");
+
+ }
+
+}
+
+
+/* ================= STATUS ================= */
+
+function setStatus(index,status){
+
+ shoppingList[index].status=status;
+
+ renderShopping();
+
+}
+
+
+/* ================= FINISH ================= */
+
+function finishShopping(){
+
+ const price=
+ Number(
+  document.getElementById("totalPrice").value
+ );
+
+ if(!price || price<=0){
+
+  alert(
+   "Iltimos, umumiy narxni kiriting."
+  );
+
+  return;
+
+ }
+
+ const bought=
+ shoppingList.filter(
+  x=>x.status==="yes"
+ );
+
+ const notBought=
+ shoppingList.filter(
+  x=>x.status==="no"
+ );
+
+ const record={
+
+  date:new Date()
+   .toLocaleString("uz-UZ"),
+
+  price:price,
+
+  total:shoppingList.length,
+
+  bought:bought,
+
+  notBought:notBought
+
+ };
+
+ history.unshift(record);
+
+ localStorage.setItem(
+  "rozgorHistory",
+  JSON.stringify(history)
+ );
+
+ alert(
+  "🎉 Bozor muvaffaqiyatli saqlandi!"
+ );
+
+ showHistory();
+
+}
+
+
+/* ================= HISTORY ================= */
+
+function showHistory(){
+
+ document
+  .getElementById("createPage")
+  .classList.add("hidden");
+
+ document
+  .getElementById("shoppingPage")
+  .classList.add("hidden");
+
+ document
+  .getElementById("historyPage")
+  .classList.remove("hidden");
+
+ renderHistory();
+
+}
+
+
+function renderHistory(){
+
+ const box=
+ document.getElementById("history");
+
+ if(history.length===0){
+
+  box.innerHTML=`
+   <div class="empty">
+    Hali bozor tarixi yo‘q.
+   </div>
+  `;
+
+  return;
+
+ }
+
+ box.innerHTML=
+
+ history.map(h=>`
+
+  <div class="history-card">
+
+   <strong>
+    🛒 ${h.date}
+   </strong>
+
+   <p>
+    Mahsulotlar:
+    <b>${h.total} ta</b>
+   </p>
+
+   <p>
+    Olingan:
+    <b>${h.bought.length} ta</b>
+   </p>
+
+   <p>
+    Umumiy xarajat:
+    <b>
+     ${h.price.toLocaleString()}
+     so‘m
+    </b>
+   </p>
+
+   ${
+    h.notBought.length
+
+    ?
+
+    `
+    <p>
+     ❌ Olinmagan mahsulotlar:
+    </p>
+
+    <small>
+     ${
+      h.notBought
+       .map(
+        x=>
+        `${x.name} — ${x.count} ${x.unit}`
+       )
+       .join(", ")
+     }
+    </small>
+    `
+
+    :
+
+    `
+    <p style="color:#08783f">
+     ✅ Hamma mahsulot olingan
+    </p>
+    `
+   }
+
+  </div>
+
+ `).join("");
+
+}
+
+
+/* ================= START ================= */
+
+renderCategories();
+renderProducts();
+renderMyList();
+
+</script>
+
+</body>
+</html>
+```
